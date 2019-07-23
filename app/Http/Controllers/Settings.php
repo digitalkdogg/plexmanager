@@ -11,9 +11,6 @@ class Settings extends Controller
 {
     function getSettings() {
 
-    	$menu =  new Menu();
-    	$menu = $menu->makemenu();
-
-    	return view('settings', ['menunav' => $menu]);
+    	return view('settings');
     }
 }
