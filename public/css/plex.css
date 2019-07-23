@@ -1,0 +1,84 @@
+  html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    margin: 0;
+    font-size: 16px;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+    min-height: 700px;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+#header-container {
+    background: #66947b;
+    color: white;
+    height:120px;
+}
+
+div#header-container div#header {
+	text-align: center;
+	font-size: 3em;
+	color:white;
+}
+
+div#footer {
+    background: #ccc;
+    color: black;
+    text-align: center;
+    height: 40px;
+}
+
+.movie-container div.movie {
+    background: #eee;
+    min-height: 200px;
+    border: 1px solid #66947b;
+    margin: 1em 4em;
+}
+
+.movie-container div.movie:hover {
+	background: white;
+	cursor:pointer;
+}
+
+#header-container .pure-menu-link, #header-container .pure-menu-item a {
+	color:white;
+	font-size:1.5em;
+	font-weight: bold;
+}
+
+#header-container .pure-menu-children a.pure-menu-link, #header-container .pure-menu-children .pure-menu-item a {
+    z-index: 10;
+    background: #eee;
+    color:#66947b;
+}
+
+#header-container .pure-menu-link:hover {
+	background:none;
+	border: 1px solid #eee;
+}
+
+#header-container .pure-menu-horizontal .pure-menu-children {
+	width:100%;
+	top:45px;
+	border-left: 1px solid #66947b;
+	border-right: 1px solid #66947b;
+	border-bottom: 1px solid #66947b;
+}
