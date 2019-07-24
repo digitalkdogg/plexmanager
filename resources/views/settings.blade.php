@@ -35,6 +35,34 @@
                 </div>
             @endif
 
+            <div id = "settings-wrap">
+                <form action ='savesettings' method = 'post'>
+                    @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            Please fix the following errors
+                        </div>
+                    @endif
+                    @foreach ($settings as $setting) 
+                        <div class = "pure-g">
+                            <input type = "hidden" id = "id" name = "id" value = "{{$setting->id}}" />
+                            <div class = "pure-u-1-4"></div>
+                            <div class = "pure-u-1-4">{{$setting->name}}</div>
+                            <div class = "pure-u-1-4">
+                                <div class = "form-group{{ $errors->has('value') ? ' has-error' : '' }}">
+                                <input id = "value" name = "value" type = "text" value = "{{$setting->value}}"></input>
+                                @if($errors->has('value'))
+                                    <span class = "help-block">{{$errors->first('value')}}</span>
+                                @endif
+                                </div>
+                            </div>
+                        </div>
+                     @endforeach
+                        
+                    <button type = "submit" class = "btn btn-default">Submit</button>
+                   
+                </form>
+            </div>
 
 
         </div>
