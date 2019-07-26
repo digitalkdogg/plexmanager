@@ -6,13 +6,9 @@
 
         <title>Plex Manager - Home</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <!-- Styles -->
-          <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/plex.css') }}" >
-      
-
+        @include ('styles')    
+        <!-- end styles -->
 
     </head>
     <body>
@@ -44,5 +40,7 @@
 
         </div>
           <div id = "footer">This is hte footer</div>
+
+          @include ('scripts');
     </body>
 </html>
