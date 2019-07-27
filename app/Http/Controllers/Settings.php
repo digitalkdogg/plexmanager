@@ -14,6 +14,11 @@ class Settings extends Controller
     	return view('settings', ['settings'=> $settings]);
     }
 
+    function getJustSettings() {
+    	return \App\Settings::all();
+
+    }
+
     function getOneSetting($id) {
     	$setting = \App\Settings::find($id);
     	return $setting;

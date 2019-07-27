@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/kevin', function() {
+Route::get('/get_settings', 'Settings@getJustSettings');
+
+Route::post('/save_settings', function() {
 	
 	$inputs = Input::all();
 	$inputs = json_decode($inputs['data'], true);
