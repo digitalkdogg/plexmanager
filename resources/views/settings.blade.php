@@ -33,21 +33,26 @@
             @endif
 
             <div id = "settings-wrap">
-                <form action ='savesettings' method = 'post'>
+                <form action ='savesettings' id = 'savesettings' method = 'post' class = "border-radius-std">
                     @csrf
-                    @if ($errors->any())
+                    <div id = "error-wrap">
                         <div class="alert alert-danger" role="alert">
                             Please fix the following errors
                         </div>
-                    @endif
+                    </div>
+
+                        <div class = "pure-g border-bottom-std">
+                            <div class = "pure-u-1-4"></div>
+                            <div class = "pure-u-1-4"><b>Nmae</b></div>
+                            <div class = "pure-u-1-4"><b>Value</b></div>
+                        </div>
                     @foreach ($settings as $setting) 
-                        <div class = "pure-g">
-                            <input type = "hidden" id = "id" name = "id" value = "{{$setting->id}}" />
+                        <div class = "pure-g" id = "setting_{{$setting->id}}" data-id="{{$setting->id}}" data-name = "{{$setting->name}}" data-value = "{{$setting->value}}">
                             <div class = "pure-u-1-4"></div>
                             <div class = "pure-u-1-4">{{$setting->name}}</div>
                             <div class = "pure-u-1-4">
                                 <div class = "form-group{{ $errors->has('value') ? ' has-error' : '' }}">
-                                <input id = "value" name = "value" type = "text" value = "{{$setting->value}}"></input>
+                                <input id = "{{$setting->id}}" name = "value" type = "text" value = "{{$setting->value}}" data-id="{{$setting->id}}"></input>
                                 @if($errors->has('value'))
                                     <span class = "help-block">{{$errors->first('value')}}</span>
                                 @endif
@@ -56,7 +61,7 @@
                         </div>
                      @endforeach
                         
-                    <button type = "submit" class = "btn btn-default">Submit</button>
+                    <button type = "submit" id="save-settings" class = "btn btn-default">Submit</button>
                    
                 </form>
             </div>

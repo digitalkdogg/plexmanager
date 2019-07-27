@@ -10,10 +10,12 @@ class Plex extends Controller
 {
     public function getXml() {
 
-        $url = new Settings();
-        $url = $url->getOneSetting(1);
+        $setting = new Settings();
+        $url = $setting->getOneSetting(1);
 
-        $xml = simplexml_load_file($url->value .'/library/sections/1/all?X-Plex-Token=rLDsHXX_9Q52ePjdkPZm');
+        $token = $setting->getOneSetting(2);
+
+        $xml = simplexml_load_file($url->value .'/library/sections/1/all?X-Plex-Token=' . $token->value);
 
         $moviesarr = array();
         $title = null;

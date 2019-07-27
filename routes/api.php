@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,35 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('/kevin', function() {
+	
+	$inputs = Input::all();
+	$inputs = json_decode($inputs['data'], true);
+
+	$returnarr = array('status'=>'Nothing To Update');
+
+	$settings = new \App\Settings();
+	foreach($inputs as $data) {
+
+		$oldrec = DB::table('settings')->where('id', $data['id'])->first();
+
+		if($data['value'] != '' && isset($data['value'])) { 
+			if($oldrec->value != $data['value']) {
+				$settings->exists = true;
+				$settings->value = $data['value'];
+				$settings->id = $data['id'];
+				try {
+					$settings->save();
+					$returnarr['status'] = 'Settings Updated';
+				} catch(exception $e) {
+					$returnarr['status'] = 'error';
+					$returnarr['msg'] = json_encode($e);
+					$returnarr['id']= $data['id'];
+				}
+			}
+		}
+	}
+	return json_encode($returnarr);
 });

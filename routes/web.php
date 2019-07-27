@@ -20,22 +20,17 @@ Route::get('/', function () {
 Route::get('scan', 'Plex@getXml');
 Route::get('settings', 'Settings@getSettings');
 Route::post('/savesettings', function (Request $request) {
-	$data = $request->validate([
-		'value' => 'required',
-		'name' => 'requered'
-	]);
+//	$data = $request->validate([
+//		'value' => 'required',
+//		'name' => 'requered'
+//	]);
 
-	$settings = new \App\Settings($data);
-	$settings->exists = true;
-	$settings->where('id', 1);
-	$settings->value = $data['value'];
-	$settings->id = 1;
-	$settings->save();
+//	$settings = new \App\Settings($data);
+//	$settings->exists = true;
+//	$settings->where('id', 1);
+//	$settings->value = $data['value'];
+//	$settings->id = 1;
+//	$settings->save();
 
-	return redirect('/settings');
+//	return redirect('/settings');
 });
-//Route::get('/scan', function () {
-	//var_dump(\App\Plex::all());
-   // return view('scan');
-
-//});

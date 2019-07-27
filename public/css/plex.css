@@ -82,3 +82,41 @@ div#footer {
 	border-right: 1px solid #66947b;
 	border-bottom: 1px solid #66947b;
 }
+
+form#savesettings {
+    margin: 5% 20%;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+div#error-wrap {
+	display: none;
+}
+
+.border-radius-std {
+	border-radius:5px;
+}
+
+.pure-g {
+	padding:10px;
+}
+
+.border-std {
+	border: 1px solid black;
+}
+
+.border-bottom-std {
+	border-bottom: 1px solid black;
+}
+
+.border-top-std {
+	border-top: 1px solid black;
+}
+
+.border-left-std {
+	border-left: 1px solid black;
+}
+
+.border-right-std {
+	border-right: 1px solid black;
+}
