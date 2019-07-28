@@ -25,8 +25,13 @@ class Plex extends Controller
             $index = $index + 1;
             $title = (string)$video->attributes()->title;
             $key = (string)$video->attributes()->key;
-            $titlearr = array('key' => str_replace("/", "-", $key), 'title'=>$title);
-            $movies[$title] = $titlearr;
+            $format = (string)$video->Media->attributes()->container;
+            $thumb = (string)$video->attributes()->thumb;
+            $metaarr = array('key' => str_replace("/", "-", $key), 
+                            'title'=> str_replace('_', " ", $title), 
+                            'format'=>$format,
+                            'thumb'=>$thumb);
+            $movies[$title] = $metaarr;
         
         }
 

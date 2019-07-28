@@ -37,20 +37,23 @@
 
                 <form class = "pure-form">
                     <div class="content pure-g movie-row-header border-bottom-std" >
-                             <div class = "pure-u-1-5 status"><b>Status</b></div>
-                            <div class = "pure-u-1-5 key"><b>Key</b></div>
-                            <div class = "pure-u-1-5 name"><b>Title</b></div>
-                            <div class = "pure-u-1-5"></div>
-                            <div class = "pure-u-1-5"></div>
-
+                             <div class = "pure-u-1-8 status"><b>Status</b></div>
+                            <div class = "pure-u-1-6 key"><b>Key</b></div>
+                            <div class = "pure-u-1-6 name"><b>Title</b></div>
+                            <div class = "pure-u-1-8"><b>Format</b></div>
+                            <div class = "pure-u-1-8"><b>Thumbnail</b></div>
+                            <div class = "pure-u-1-8">test</div>
+                            <div class = "pure-u-1-8">test</div>
                         </div>
                     @foreach ($movies as $movie) 
                         <div class="content pure-g movie-row-container" id = "movie-{{$movie['key']}}" >
-                             <div class = "pure-u-1-5 status"></div>
-                            <div class = "pure-u-1-5 key">{{$movie['key']}}</div>
-                            <div class = "pure-u-1-5 name">{{$movie['title']}}</div>
-                            <div class = "pure-u-1-5"></div>
-                            <div class = "pure-u-1-5"></div>
+                             <div class = "pure-u-1-8 status"></div>
+                            <div class = "pure-u-1-6 key">{{$movie['key']}}</div>
+                            <div class = "pure-u-1-6 name">{{$movie['title']}}</div>
+                            <div class = "pure-u-1-8 format">{{$movie['format']}}</div>
+                            <div class = "pure-u-1-8 thumbnail">{{$movie['thumb']}}</div>
+                            <div class = "pure-u-1-8">test</div>
+                            <div class = "pure-u-1-8">test</div>
 
                         </div>
                     @endforeach

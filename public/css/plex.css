@@ -48,13 +48,21 @@ div#footer {
 
 .movie-container div.movie {
     background: #eee;
-    min-height: 200px;
+    min-height: 400px;
     border: 1px solid #66947b;
     margin: 1em 4em;
+    background-size: cover !important;
 }
 
-.movie-container div.movie:hover {
-	background: white;
+.movie-container div.movie .overlay {
+    background: #ccc;
+    height: 100%;
+    opacity: .8;
+    color: black;
+}
+
+.movie-container div.movie .overlay:hover {
+	opacity:.95;
 	cursor:pointer;
 }
 
@@ -84,7 +92,7 @@ div#footer {
 }
 
 form.pure-form {
-    margin: 5% 20%;
+    margin: 5% 15%;
     border: 1px solid #ccc;
     padding: 10px;
 }
@@ -98,9 +106,9 @@ div#error-wrap {
 }
 
 .pure-g {
-	padding:10px;
+    padding: 10px;
+    word-break: break-word;
 }
-
 .border-std {
 	border: 1px solid black;
 }

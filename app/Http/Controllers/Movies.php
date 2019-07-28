@@ -10,6 +10,8 @@ class Movies extends Controller
     	$movie->exists = true;
 		$movie->key = $data['key'];
 		$movie->name = $data['name'];
+		$movie->thumbnail = $data['thumbnail'];
+		$movie->format = $data['format'];
 		$movie->id = $data['id'];
 		try {
 			$movie->save();

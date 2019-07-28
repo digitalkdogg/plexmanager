@@ -60,6 +60,8 @@ Route::post('/save_scan', function () {
 		if (is_null($oldrec)==true) {
 			$movie->name = $inputs['name'];
 			$movie->key = $inputs['key'];
+			$movie->format = $inputs['format'];
+			$movie->thumbnail = $inputs['thumbnail'];
 			try {
 				$movie->save();
 				$returnarr['status'] = 'added';

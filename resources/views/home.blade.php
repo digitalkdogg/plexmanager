@@ -30,10 +30,17 @@
                     @endauth
                 </div>
             @endif
-
+  
             <div class="content pure-g movie-container">
              @foreach ($movies as $movie) 
-                <div class = "pure-u-1-4 movie" id = "id_{{ $movie->id }}"> {{$movie->name}}</div>
+
+                 <div class = "pure-u-1-4 movie" id = "id_{{ $movie->id }}" data-bg = "{{$movie->thumbnail}}">
+                    <div class = "overlay">
+                        <br />Title : {{$movie->name}}<br />
+                        Key : {{$movie->key}}<br />
+                        Format : {{$movie->format}}<br />
+                    </div>
+                </div>
              @endforeach
             
             </div>

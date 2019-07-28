@@ -44,6 +44,24 @@ var plex = {
 			plex.data.settings[id]['id'] = obj.id.toString();
 			plex.data.settings[id]['name'] = obj.name;
 			plex.data.settings[id]['value'] = obj.value;
+
+			if (obj.name == 'Plex Server') {
+				if (plex.data.settings.plex == undefined) {
+					plex.data.settings.plex = {}
+				}
+				plex.data.settings.plex['server'] = obj.value;
+			}
+
+			if (obj.name == 'Plex Token') {
+				if (plex.data.settings.plex == undefined) {
+					plex.data.settings.plex = {}
+				}
+				plex.data.settings.plex['token'] = obj.value;
+				//plex.data.settings['plex'] = {'token': obj.value}
+			}			
+
+			$(document).trigger('settingsloaded');
+			
 		},
 		'write_scan_to_obj': function (id, obj) {
 			if (plex.data.scan == undefined) {
@@ -53,6 +71,8 @@ var plex = {
 			plex.data.scan[id] = {}
 			plex.data.scan[id]['key'] = obj.id.toString();
 			plex.data.scan[id]['name'] = obj.name;
+			plex.data.scan[id]['format'] = obj.format;
+			plex.data.scan[id]['thumbnail'] = obj.thumbnail;
 		},
 		'get_settings_from_api': function () {
 			$.ajax({
@@ -90,7 +110,9 @@ var plex = {
 					var id = $(this).attr('id');
 					var obj = {
 						'id': id,
-						'name': $(this).find('.name').text()
+						'name': $(this).find('.name').text(),
+						'format': $(this).find('.format').text(),
+						'thumbnail': $(this).find('.thumbnail').text(),
 					}
 
 					if (id != undefined) {
@@ -115,29 +137,47 @@ var plex = {
 
 $(function () {
 
+	//$(document).on('settingsloaded', {
+//		foo: 'bar'
+//	}, function (event) {
+//		console.log(event.data.foo)
+//	})
+
 	plex.fn.init();
 
-	if ($('#settings-wrap').length>0) {
-		$('#settings-wrap button#save-settings').click(function (e) {
-			e.preventDefault();
-			plex.fn.save_settings();	
-		})
+	$(document).on('settingsloaded', {}, function (event) {
+		if ($('#settings-wrap').length>0) {
+			$('#settings-wrap button#save-settings').click(function (e) {
+				e.preventDefault();
+				plex.fn.save_settings();	
+			})
 
-		$('#settings-wrap #savesettings input').change(function () {
-			var id = $(this).attr('id');
-			var type = $(this).attr('name');
-			if (type == 'value') {
-				plex.data.settings[id]['value'] = plex.fn.update_obj(plex.data.settings[id]['value'], $(this).val());
-			}
-		})
-		
-	}
+			$('#settings-wrap #savesettings input').change(function () {
+				var id = $(this).attr('id');
+				var type = $(this).attr('name');
+				if (type == 'value') {
+					plex.data.settings[id]['value'] = plex.fn.update_obj(plex.data.settings[id]['value'], $(this).val());
+				}
+			})
+			
+		}
 
-	if ($('#scan-wrap').length>0) {
-		$('#scan-wrap button').click(function (e){
-			e.preventDefault();
-			$('.movie-row-container .status').text('queued');
-			plex.fn.save_scan();
-		})
-	}
+		if ($('#scan-wrap').length>0) {
+			$('#scan-wrap button').click(function (e){
+				e.preventDefault();
+				$('.movie-row-container .status').text('queued');
+				plex.fn.save_scan();
+			})
+		}
+
+		if ($('.movie-container').length>0) {
+			$('.movie-container .movie').each(function () {
+				var bg = $(this).attr('data-bg');
+			
+				if (bg != undefined) {
+					$(this).css({'background': 'url(' + plex.data.settings.plex.server+bg+'?X-Plex-Token='+plex.data.settings.plex.token+')'})
+				}
+			})
+		}
+	}) //end settings loaded
 })
