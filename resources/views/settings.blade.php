@@ -33,7 +33,7 @@
             @endif
 
             <div id = "settings-wrap">
-                <form action ='savesettings' id = 'savesettings' method = 'post' class = "border-radius-std">
+                <form action ='savesettings' id = 'savesettings' method = 'post' class = "border-radius-std pure-form">
                     @csrf
                     <div id = "error-wrap">
                         <div class="alert alert-danger" role="alert">
@@ -61,7 +61,7 @@
                         </div>
                      @endforeach
                         
-                    <button type = "submit" id="save-settings" class = "btn btn-default">Submit</button>
+                    <button type = "submit" id="save-settings" class = "pure-button pure-button-primary">Submit</button>
                    
                 </form>
             </div>

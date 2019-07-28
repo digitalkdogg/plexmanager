@@ -33,13 +33,31 @@
                 </div>
             @endif
 
-            @foreach ($movies as $movie) 
-                <div class="content pure-g movie-row-container">
-                    <div class = "pure-u-1-3"></div>
-                    <div class = "pure-u-1-3">{{$movie['title']}}</div>
-                    <div class = "pure-u-1-3"></div>
-                </div>
-             @endforeach
+            <div id = "scan-wrap">
+
+                <form class = "pure-form">
+                    <div class="content pure-g movie-row-header border-bottom-std" >
+                             <div class = "pure-u-1-5 status"><b>Status</b></div>
+                            <div class = "pure-u-1-5 key"><b>Key</b></div>
+                            <div class = "pure-u-1-5 name"><b>Title</b></div>
+                            <div class = "pure-u-1-5"></div>
+                            <div class = "pure-u-1-5"></div>
+
+                        </div>
+                    @foreach ($movies as $movie) 
+                        <div class="content pure-g movie-row-container" id = "movie-{{$movie['key']}}" >
+                             <div class = "pure-u-1-5 status"></div>
+                            <div class = "pure-u-1-5 key">{{$movie['key']}}</div>
+                            <div class = "pure-u-1-5 name">{{$movie['title']}}</div>
+                            <div class = "pure-u-1-5"></div>
+                            <div class = "pure-u-1-5"></div>
+
+                        </div>
+                    @endforeach
+
+                    <button id = "save-scan" class = "pure-button pure-button-primary">Save</button><span id = "status-wrap"></span>
+                </form>
+            </div>
 
         </div>
         <div id = "footer">This is hte footer</div>

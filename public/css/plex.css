@@ -83,7 +83,7 @@ div#footer {
 	border-bottom: 1px solid #66947b;
 }
 
-form#savesettings {
+form.pure-form {
     margin: 5% 20%;
     border: 1px solid #ccc;
     padding: 10px;

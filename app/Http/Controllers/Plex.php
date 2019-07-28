@@ -17,11 +17,15 @@ class Plex extends Controller
 
         $xml = simplexml_load_file($url->value .'/library/sections/1/all?X-Plex-Token=' . $token->value);
 
+
         $moviesarr = array();
         $title = null;
+        $index = 0;
         foreach($xml->Video as $video) {
+            $index = $index + 1;
             $title = (string)$video->attributes()->title;
-            $titlearr = array('title'=>$title);
+            $key = (string)$video->attributes()->key;
+            $titlearr = array('key' => str_replace("/", "-", $key), 'title'=>$title);
             $movies[$title] = $titlearr;
         
         }

@@ -9,5 +9,6 @@ class Movie extends Model
       protected $fillable = [
    		'title',
    		'format',
+   		'key',
    ];
 }
