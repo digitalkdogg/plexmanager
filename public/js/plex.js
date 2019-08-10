@@ -22,7 +22,7 @@ var plex = {
 		},
 		'save_scan_to_api': function (obj) {
 			$.ajax({
-				'url': '/api/save_scan',
+				'url': 'api/save_scan',
 				'type' : 'Post',
 				'data': obj,
 				'success': function (data) {
@@ -75,8 +75,13 @@ var plex = {
 			plex.data.scan[id]['thumbnail'] = obj.thumbnail;
 		},
 		'get_settings_from_api': function () {
+			var url = '/api/get_settings'
+			if (plex.settings.urls.port == '' || plex.settings.urls.port == undefined) {
+				url = plex.settings.urls.path + url;
+			}
+
 			$.ajax({
-				'url': '/api/get_settings',
+				'url': url,
 				'type': 'get',
 				'success': function (data) {
 					$.each(data, function () {
@@ -86,6 +91,29 @@ var plex = {
 			})
 		},
 		'init': function () {
+
+			if (plex.settings == undefined) {
+				plex.settings = {}
+			}
+
+			if (env != undefined) {
+				plex.settings['env'] = env
+				env = null;
+			}
+
+			plex.settings['urls'] = {}
+			plex.settings.urls['href'] = window.location.href
+			plex.settings.urls['host'] = window.location.host
+			plex.settings.urls['port'] = window.location.port
+			plex.settings.urls['path'] = window.location.pathname
+
+		//	if (plex.settings.urls['port'] == '' || plex.settings.urls['port']==undefined) {
+		//		$('#header-container .pure-menu li a').each(function (){
+				//	$(this).attr('href', plex.settings.urls.path + $(this).attr('href'))
+		//		})
+		//	}
+			
+
 			if ($('#settings-wrap #savesettings .pure-g').length > 0) {
 				$('#settings-wrap #savesettings .pure-g').each(function () {
 					var id = $(this).attr('data-id');

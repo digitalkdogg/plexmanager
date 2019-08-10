@@ -17,6 +17,12 @@
     position: relative;
 }
 
+@media only screen and (max-width: 600px) {
+	.pure-u-1-4 {
+    	width: 100%;
+    }
+}
+
 .top-right {
     position: absolute;
     right: 10px;

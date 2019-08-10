@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-
-
 class Settings extends Controller
 {
     function getSettings() {
@@ -15,7 +13,8 @@ class Settings extends Controller
     }
 
     function getJustSettings() {
-    	return \App\Settings::all();
+        return \App\Settings::all();
+
 
     }
 

@@ -14,7 +14,8 @@
     <body>
         <div id = "header-container">
             <div id = "header">Plex Manager</div>
-                @include ('menu');
+               
+            @include ('menu');
         </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
